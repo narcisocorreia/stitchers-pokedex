@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure front sprite is visible by default */
+.sprite-front {
+  opacity: 1;
+  animation-play-state: paused; /* Default state: no animation */
+}
+
+/* Back sprite should be hidden by default */
+.sprite-back {
+  opacity: 0;
+  animation-play-state: paused; /* Default state: no animation */
+}
+
+/* Trigger animations on hover */
+.card:hover .sprite-front {
+  animation: spriteMove 3s infinite, bounce 2s infinite;
+  animation-play-state: running;
+}
+
+.card:hover .sprite-back {
+  animation: spriteMoveBack 3s infinite, bounce 2s infinite;
+  animation-play-state: running;
+  opacity: 1; /* Ensure it becomes visible on hover */
+}
+
+/* Slower bouncing animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Slower sprite animation (flipping between front and back) */
+@keyframes spriteMove {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes spriteMoveBack {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

@@ -12,7 +12,16 @@ export interface Pokemon {
   location_area_encounters: string;
   moves: Array<{ move: { name: string; url: string }; version_group_details: Array<{ level_learned_at: number; version_group: { name: string; url: string }; move_learn_method: { name: string; url: string } }> }>;
   species: { name: string; url: string };
-  sprites: { front_default: string; other: { [key: string]: { front_default: string } } };
+  sprites: {
+    front_default: string;
+    back_default: string;
+    front_shiny: string;
+    back_shiny: string;
+    other: {
+      'official-artwork': { front_default: string };
+      dream_world: { front_default: string };
+    };
+  };
   stats: Array<{ base_stat: number; effort: number; stat: { name: string; url: string } }>;
   types: Array<{ slot: number; type: { name: string; url: string } }>;
 }

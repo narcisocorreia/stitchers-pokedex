@@ -2,3 +2,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-image: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png'),
+                    url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'),
+                    url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png'),
+                    url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png');
+  background-position: 20% 40%, 80% 60%, 30% 75%, 70% 85%;
+  background-repeat: no-repeat;
+  background-size: 150px, 150px, 150px, 150px;
+}
+
+/* Adding some overlay to make content more readable */
+.overlay {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Additional styling to make the text stand out */
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: #343a40;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
