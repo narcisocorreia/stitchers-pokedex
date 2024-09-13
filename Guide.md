@@ -111,3 +111,19 @@ The PokemonListComponent will be shown.
 - When URL is <http://localhost:4200/items>:
 The ItemsListComponent will be shown.
 
+---
+
+## 3 -> Pokemon Listing
+
+Now lets look at the first route, Pokemon List, which the objective is to list the pokemon. So as you can see in the ```src/app/services/pokemon.service.spec.ts``` you can see a service that as already been created and as two function ready to user getPokemonList and getPokemonDetail.
+
+We will use this service in this point to be able to list all the pokemon, but we need a place to store the pokemon list somewhere, so we will create a new service call PokemonListService.ts.
+
+Inside the ```src/app/services``` run the command:
+
+```bash
+  ng g s pokemon-list
+```
+
+As you can see a new service appeared in that directory.
+Sets now setup the service to be able to fetch and store the pokemon list.
