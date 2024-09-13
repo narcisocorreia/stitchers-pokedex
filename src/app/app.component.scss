@@ -38,34 +38,9 @@
 }
 
 .content {
-  flex-grow: 1;
+  width: 100%;
   padding: 20px;
   background-color: #ffffff;
   overflow-y: auto;
 }
 
-header {
-  position: relative;
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #343a40;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-
-}
-
-header h1 {
-  position: relative;
-  z-index: 1;
-}
