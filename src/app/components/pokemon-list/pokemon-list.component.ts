@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '../../types/pokemon';
 import { PokemonService } from '../../services/pokemon.service';
+import { PokemonListService } from '../../services/pokemon-list.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss'],
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, OnDestroy {
   pokemonList: Pokemon[] = [];
 
-  constructor(private pokemonService: PokemonService) { }
+  subscriptionArray : Subscription[] = [];
+
+  constructor(private pokemonListService: PokemonListService) { }
 
   ngOnInit(): void {
-    this.fetchPokemonList();
+    this.pokemonListService.fetchPokemon();
+
+    const listSubscription = this.pokemonListService.pokemonListObservable.subscribe(list => {
+      this.pokemonList = list;
+    })
+
+    this.subscriptionArray.push(listSubscription)
   }
 
-  fetchPokemonList(): void {
-    this.pokemonService.getPokemonList({ limit: 20 }).subscribe((data) => {
-      data.results.forEach((result) => {
-        this.pokemonService.getPokemonDetail(result.name).subscribe((pokemon) => {
-          this.pokemonList.push(pokemon);
-        });
-      });
-    });
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscriptionArray.forEach(subscription => {subscription.unsubscribe()})
   }
 
   getGradient(pokemon: Pokemon): string {
